@@ -12,9 +12,13 @@ import EnotServiceHeaderCard from './EnotServiceHeaderCard'
 import EnotServicePriceCard from './EnotServicePriceCard'
 import EnotServiceCleanerCard from './EnotServiceCleanerCard'
 
+/** Footer */
+import EnotServiceFooter from './EnotServiceFooter'
+
 export default {
     EnotServiceToolbar, EnotServiceHeader, EnotServiceHeaderCard,
     EnotServiceChoice, EnotServicePriceCard, EnotServiceCleanerCard,
     
-    EnotServiceCleaningBlock, EnotServicePriceBlock, EnotServiceCleanersBlock
+    EnotServiceCleaningBlock, EnotServicePriceBlock, EnotServiceCleanersBlock,
+    EnotServiceFooter
 }

@@ -118,6 +118,10 @@ $secondary-color: #d2d2d2;
     font-size: 16px;
 }
 
+.list-group{
+    list-style-type: none;
+}
+
 @media only screen and (min-width: 1000px){
     .es-header{
         height: calc(100% - 340px);
