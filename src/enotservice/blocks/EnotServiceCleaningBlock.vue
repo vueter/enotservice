@@ -5,17 +5,17 @@
 			<center>
 				<p class="block-sub-title">Наш сотрудник приезжает в назначенное время со всем необходимым и сразу приступает к делу. Вам остаётся только оценить результат</p>
 			</center>
-			<v-tabs v-model="activeTab" fixed-tabs style="background-color: none" color="#E0E7EF">
+			<v-tabs v-bind:hide-slider="true" show-arrows v-model="activeTab" fixed-tabs style="background-color: none" color="#E0E7EF">
 				<v-tab v-for="(tab, index) in tabs" v-bind:key="index">
 					{{ tab.name }}
 				</v-tab>
 			</v-tabs>
-			<v-tabs-items v-model="activeTab">
-				<v-tab-item v-for="(tab, index) in tabs" v-bind:key="index">
+			<div v-for="(tab, index) in tabs" v-bind:key="index">
+				<template v-if="index == activeTab">
 					<img v-if="tab.image" class="image-center" src="../assets/images/cleaning.png">
 					<img v-else class="image-center" src="../assets/images/cleaning.png">
-				</v-tab-item>
-			</v-tabs-items>
+				</template>
+			</div>
 		</v-container>
 	</div>
 </template>
