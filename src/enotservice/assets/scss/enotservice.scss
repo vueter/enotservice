@@ -3,7 +3,6 @@ $primary-color: #00763E;
 $secondary-color: #d2d2d2;
 
 .es-header{
-    height: 100%;
     background-image: url(../images/header.jpg);
     background-repeat: no-repeat;
     background-position: center center;
@@ -15,7 +14,7 @@ $secondary-color: #d2d2d2;
 }
 
 .es-header-bottom{
-    height: 150px;
+    min-height: 150px;
     background-color: white;
     padding: 0px !important;
 }
@@ -66,5 +65,38 @@ $secondary-color: #d2d2d2;
         text-align: center;
         padding-top: 10px;
         font-size: 17px;
+    }
+}
+.v-toolbar{
+    max-width: 100%;
+}
+
+
+.full-height{
+    height: 100%;
+}
+
+.bg-secondary{
+    background-color: #E0E7EF !important;
+}
+
+.image-center{
+    margin-top: 20px;
+    margin-left: 50%;
+    transform: translate(-50%);
+    max-width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.floating{
+    float: left;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+@media only screen and (min-width: 1000px){
+    .es-header{
+        height: 100%;
     }
 }

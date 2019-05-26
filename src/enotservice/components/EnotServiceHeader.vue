@@ -1,5 +1,5 @@
 <template>
-	<v-content class="es-header">
+	<div class="es-header">
 		<es-toolbar />
 		<v-container class="main">
 			<v-layout row wrap>
@@ -47,7 +47,7 @@
 				</v-layout>
 			</v-container>
 		</v-content>
-	</v-content>
+	</div>
 </template>
 <script>
 export default {
