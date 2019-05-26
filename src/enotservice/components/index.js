@@ -11,6 +11,7 @@ import EnotServiceCleanersBlock from '../blocks/EnotServiceCleanersBlock'
 import EnotServiceHeaderCard from './EnotServiceHeaderCard'
 import EnotServicePriceCard from './EnotServicePriceCard'
 import EnotServiceCleanerCard from './EnotServiceCleanerCard'
+import EnotServiceChoiceCard from './EnotServiceChoiceCard'
 
 /** Footer */
 import EnotServiceFooter from './EnotServiceFooter'
@@ -18,6 +19,7 @@ import EnotServiceFooter from './EnotServiceFooter'
 export default {
     EnotServiceToolbar, EnotServiceHeader, EnotServiceHeaderCard,
     EnotServiceChoice, EnotServicePriceCard, EnotServiceCleanerCard,
+    EnotServiceChoiceCard,
     
     EnotServiceCleaningBlock, EnotServicePriceBlock, EnotServiceCleanersBlock,
     EnotServiceFooter

@@ -12,7 +12,7 @@
 						</v-card-text>
 						<v-divider></v-divider>
 						<v-card-text>
-							<v-btn color="primary" block round dark>
+							<v-btn color="primary" block round dark to="/order">
 								Рассчитать стоимость
 							</v-btn>
 						</v-card-text>

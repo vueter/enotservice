@@ -122,6 +122,25 @@ $secondary-color: #d2d2d2;
     list-style-type: none;
 }
 
+.es-card{
+    border: 1px solid $secondary-color !important;
+    border-radius: 4px;
+    height: 130px;
+    cursor: pointer;
+}
+.es-card:hover{
+    border: 1px solid $primary-color !important;
+}
+
+.es-card-header{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+.es-card-bottom{
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
 @media only screen and (min-width: 1000px){
     .es-header{
         height: calc(100% - 340px);
