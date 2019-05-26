@@ -1,9 +1,6 @@
 <template>
   <v-app>
-    <es-toolbar/>
-    <v-content>
-      <router-view/>
-    </v-content>
+    <router-view/>
   </v-app>
 </template>
 

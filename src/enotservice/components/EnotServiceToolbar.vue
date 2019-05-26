@@ -1,5 +1,5 @@
 <template>
-	<v-toolbar app flat>
+	<v-toolbar app flat color="white">
 		<v-toolbar-title class="headline text-uppercase">
 			<span>ENOT</span>
 			<span class="font-weight-light">SERVICE</span>

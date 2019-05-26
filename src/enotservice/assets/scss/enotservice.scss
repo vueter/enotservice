@@ -1,0 +1,37 @@
+
+$primary-color: #00763E;
+
+.es-header{
+    height: 100%;
+    background-image: url(../images/header.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    .container.main{
+        height: calc(100% - 200px);
+    }
+}
+
+.es-header-bottom{
+    height: 200px;
+    background-color: white;
+}
+
+.v-card{
+    border-radius: 10px;
+}
+
+.v-card__title{
+    border-top: 5px solid $primary-color !important;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-size: 1.5rem;
+}
+
+.v-toolbar__items{
+    .v-btn:hover{
+        border-bottom: 5px solid $primary-color;
+        background-color: rgba(30, 134, 85, 0.04);
+    }
+}
