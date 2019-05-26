@@ -4,6 +4,7 @@
     <es-cleaning-block/>
     <es-price-block/>
     <!--<es-cleaners-block /> -->
+    <es-order-card/>
     <es-footer>Footer</es-footer>
   </v-content>
 </template>

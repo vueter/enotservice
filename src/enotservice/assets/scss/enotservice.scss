@@ -141,6 +141,26 @@ $secondary-color: #d2d2d2;
     border-top-right-radius: 0px;
 }
 
+.es-order-card{
+    background-color: rgba(24, 132, 83, 0.8) !important;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.es-order-card-main{
+    background-image: url(../images/order-card.png);
+}
+
+.es-order-card-title{
+    color: white;
+}
+
+.es-order-card-sub-title{
+    color: #AFD6C2;
+    text-transform: uppercase;
+}
+
 @media only screen and (min-width: 1000px){
     .es-header{
         height: calc(100% - 340px);
