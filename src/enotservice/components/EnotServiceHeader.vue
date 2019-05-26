@@ -1,5 +1,5 @@
 <template>
-	<div class="es-header">
+	<div class="es-header" v-bind:style="'height: ' + getheight()">
 		<es-toolbar />
 		<v-container class="main">
 			<v-layout row wrap>
@@ -56,6 +56,16 @@ export default {
 		return {
 			types: ['Квартира', 'Свой дом'],
 			numberRooms: ['1 комнатная', '2-х комнатная', '3-х комнатная', '4-х комнатная', '5-х комнатная']
+		}
+	},
+	methods: {
+		getheight(){
+			const height = window.screen.availHeight ;
+			console.log(height)
+			if(height > 700){
+				return (height - 120) + 'px'
+			}
+			return 'auto';
 		}
 	}
 }

@@ -1,8 +1,10 @@
 <template>
 	<div class="bg-secondary floating">
 		<v-container>
-			<h3 style="text-align:center;font-size: 1.75rem;font-weight: 500;">Как мы делаем уборку квартиры</h3>
-			<p style="text-align:center">Наш сотрудник приезжает в назначенное время со всем необходимым и сразу приступает к делу. Вам остаётся только оценить результат</p>
+			<h3 class="block-title">Как мы делаем уборку квартиры</h3>
+			<center>
+				<p class="block-sub-title">Наш сотрудник приезжает в назначенное время со всем необходимым и сразу приступает к делу. Вам остаётся только оценить результат</p>
+			</center>
 			<v-tabs v-model="activeTab" fixed-tabs style="background-color: none" color="#E0E7EF">
 				<v-tab v-for="(tab, index) in tabs" v-bind:key="index">
 					{{ tab.name }}

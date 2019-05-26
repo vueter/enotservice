@@ -1,9 +1,8 @@
 <template>
   <v-content>
     <es-header/>
-    <es-cleaning-block>
-      
-    </es-cleaning-block>
+    <es-cleaning-block/>
+    <es-price-block/>
   </v-content>
 </template>
 

@@ -95,8 +95,31 @@ $secondary-color: #d2d2d2;
     min-width: 100%;
 }
 
+.block-title{
+    text-align:center;
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+.block-sub-title{
+    text-align:center;
+    max-width: 800px;
+}
+
+.br-4{
+    border-radius: 4px !important;
+}
+
+.es-card-title{
+    font-size: 18px;
+    font-weight: bold;
+}
+.es-card-sub-title{
+    font-size: 16px;
+}
+
 @media only screen and (min-width: 1000px){
     .es-header{
-        height: 100%;
+        height: calc(100% - 340px);
     }
 }
