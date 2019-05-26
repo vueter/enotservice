@@ -5,14 +5,16 @@ import EnotServiceChoice from './EnotServiceChoice'
 /** Blocks */
 import EnotServiceCleaningBlock from '../blocks/EnotServiceCleaningBlock'
 import EnotServicePriceBlock from '../blocks/EnotServicePriceBlock'
+import EnotServiceCleanersBlock from '../blocks/EnotServiceCleanersBlock'
 
 /** Cards */
 import EnotServiceHeaderCard from './EnotServiceHeaderCard'
 import EnotServicePriceCard from './EnotServicePriceCard'
+import EnotServiceCleanerCard from './EnotServiceCleanerCard'
 
 export default {
     EnotServiceToolbar, EnotServiceHeader, EnotServiceHeaderCard,
-    EnotServiceChoice, EnotServicePriceCard,
+    EnotServiceChoice, EnotServicePriceCard, EnotServiceCleanerCard,
     
-    EnotServiceCleaningBlock, EnotServicePriceBlock
+    EnotServiceCleaningBlock, EnotServicePriceBlock, EnotServiceCleanersBlock
 }

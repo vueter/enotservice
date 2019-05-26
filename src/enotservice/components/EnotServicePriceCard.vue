@@ -2,11 +2,11 @@
 	<v-card class="br-4">
 		<v-card-text>
 			<v-layout row>
-				<v-flex md9>
+				<v-flex md9 xs9 sm9>
 					<p class="es-card-sub-title">{{text}}</p>
 					<p class="es-card-title">{{price}}</p>
 				</v-flex>
-				<v-flex md3>
+				<v-flex md3 xs3 sm3>
 					<img v-bind:src="getImgUrl()">
 				</v-flex>
 			</v-layout>
@@ -40,7 +40,7 @@ export default {
 	methods: {
 		getImgUrl(){
 			var images = require.context('../assets/icons/', false, /\.png$/)
-    	return images('./' + this.image + ".png")
+			return images('./' + this.image + ".png")
 		}
 	}
 }

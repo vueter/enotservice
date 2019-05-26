@@ -3,6 +3,7 @@
     <es-header/>
     <es-cleaning-block/>
     <es-price-block/>
+    <!--<es-cleaners-block /> -->
   </v-content>
 </template>
 
