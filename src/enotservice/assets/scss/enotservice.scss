@@ -161,6 +161,17 @@ $secondary-color: #d2d2d2;
     text-transform: uppercase;
 }
 
+.es-request-card{
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid white !important;
+    font-size: 16px;
+    text-align: left;
+}
+.es-request-card.active{
+    border: 2px solid $primary-color !important;
+}
+
 @media only screen and (min-width: 1000px){
     .es-header{
         height: calc(100% - 340px);
