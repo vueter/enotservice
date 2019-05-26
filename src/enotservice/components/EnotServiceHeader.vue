@@ -22,22 +22,22 @@
 		</v-container>
 		<v-content class="es-header-bottom">
 			<v-container>
-				<v-layout>
-					<v-flex>
+				<v-layout row wrap>
+					<v-flex md4>
 						<es-header-card>
 							<template v-slot:icon>
 								<img src="../assets/icons/es-header-card-icon-1.png"/>
 							</template>
 						</es-header-card>
 					</v-flex>
-					<v-flex>
+					<v-flex md4>
 						<es-header-card>
 							<template v-slot:icon>
 								<img src="../assets/icons/es-header-card-icon-2.png"/>
 							</template>
 						</es-header-card>
 					</v-flex>
-					<v-flex>
+					<v-flex md4>
 						<es-header-card>
 							<template v-slot:icon>
 								<img src="../assets/icons/es-header-card-icon-3.png"/>

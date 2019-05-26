@@ -1,12 +1,12 @@
 <template>
 	<v-layout row class="es-choice">
-		<v-flex md2 class="es-choice-btn">
+		<v-flex md2 xs2 class="es-choice-btn">
 			<v-btn icon v-on:click="update(activeIndex - 1)"><v-icon>chevron_left</v-icon></v-btn>
 		</v-flex>
-		<v-flex md8 class="es-choice-content">
+		<v-flex md8 xs8 class="es-choice-content">
 			{{ items[activeIndex] }}
 		</v-flex>
-		<v-flex md2 class="es-choice-btn">
+		<v-flex md2 xs2 class="es-choice-btn">
 			<v-btn icon v-on:click="update(activeIndex + 1)"><v-icon>chevron_right</v-icon></v-btn>
 		</v-flex>
 	</v-layout>
