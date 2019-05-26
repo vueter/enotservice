@@ -1,10 +1,10 @@
 <template>
-	<v-toolbar app flat color="white">
+	<v-toolbar app flat color="primary" dark>
 		<v-toolbar-title class="headline text-uppercase">
 			<span>ENOT</span>
 			<span class="font-weight-light">SERVICE</span>
 		</v-toolbar-title>
-		<v-toolbar-items>
+		<v-toolbar-items class="navs">
 			<v-btn flat>Главная</v-btn>
 			<v-btn flat>О нас</v-btn>
 			<v-btn flat>Стоимость услуг</v-btn>

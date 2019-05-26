@@ -7,8 +7,10 @@
 					<v-card>
 						<v-card-title> Расчет стоимости уборки </v-card-title>
 						<v-card-text style="height:150px;">
-							Card body
+							<es-choice v-bind:items="types" v-bind:circle="true"/>
+							<es-choice v-bind:items="numberRooms" v-bind:circle="false"/>
 						</v-card-text>
+						<v-divider></v-divider>
 						<v-card-text>
 							<v-btn color="primary" block round dark>
 								Рассчитать стоимость
@@ -22,13 +24,25 @@
 			<v-container>
 				<v-layout>
 					<v-flex>
-						<es-header-card></es-header-card>
+						<es-header-card>
+							<template v-slot:icon>
+								<img src="../assets/icons/es-header-card-icon-1.png"/>
+							</template>
+						</es-header-card>
 					</v-flex>
 					<v-flex>
-						<es-header-card></es-header-card>
+						<es-header-card>
+							<template v-slot:icon>
+								<img src="../assets/icons/es-header-card-icon-2.png"/>
+							</template>
+						</es-header-card>
 					</v-flex>
 					<v-flex>
-						<es-header-card></es-header-card>
+						<es-header-card>
+							<template v-slot:icon>
+								<img src="../assets/icons/es-header-card-icon-3.png"/>
+							</template>
+						</es-header-card>
 					</v-flex>
 				</v-layout>
 			</v-container>
@@ -37,6 +51,12 @@
 </template>
 <script>
 export default {
-	name: 'es-header'
+	name: 'es-header',
+	data: () => {
+		return {
+			types: ['Квартира', 'Свой дом'],
+			numberRooms: ['1 комнатная', '2-х комнатная', '3-х комнатная', '4-х комнатная', '5-х комнатная']
+		}
+	}
 }
 </script>

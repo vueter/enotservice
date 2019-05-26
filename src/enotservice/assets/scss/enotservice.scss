@@ -1,5 +1,6 @@
 
 $primary-color: #00763E;
+$secondary-color: #d2d2d2;
 
 .es-header{
     height: 100%;
@@ -9,13 +10,14 @@ $primary-color: #00763E;
     background-size: cover;
 
     .container.main{
-        height: calc(100% - 200px);
+        height: calc(100% - 150px);
     }
 }
 
 .es-header-bottom{
-    height: 200px;
+    height: 150px;
     background-color: white;
+    padding: 0px !important;
 }
 
 .v-card{
@@ -29,9 +31,40 @@ $primary-color: #00763E;
     font-size: 1.5rem;
 }
 
-.v-toolbar__items{
+.v-toolbar__items.navs{
     .v-btn:hover{
-        border-bottom: 5px solid $primary-color;
+        border-bottom: 5px solid white;
         background-color: rgba(30, 134, 85, 0.04);
+    }
+}
+
+.es-header-card-title{
+    width: 100%;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+}
+.es-header-card-sub-title{
+    width: 100%;
+    float: left;
+    font-size: 15px;
+}
+
+.es-choice{
+    width: 100%;
+    border: 1px solid $secondary-color;
+    border-radius: 40px;
+    margin-bottom: 10px;
+    :first-child.es-choice-btn{
+        border-right: 1px solid $secondary-color;
+    }
+    :last-child.es-choice-btn{
+        border-left: 1px solid $secondary-color;
+    }
+    .es-choice-content{
+        position: block;
+        text-align: center;
+        padding-top: 10px;
+        font-size: 17px;
     }
 }
