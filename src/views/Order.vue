@@ -75,7 +75,7 @@
 									<v-text-field box label="Квартира"/>
 								</v-flex>
 							</v-layout>
-							<v-btn color="primary" block round to="/payment">Продолжить</v-btn>
+							<v-btn color="primary" block round large to="/payment">Продолжить</v-btn>
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -91,6 +91,7 @@
 				</v-flex>
 			</v-layout>
 		</v-container>
+		<es-footer/>
 	</v-content>
 </template>
 <script>
