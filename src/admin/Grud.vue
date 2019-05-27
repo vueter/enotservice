@@ -83,6 +83,12 @@ export default {
 	computed: {
 		target(){
 			return this.$route.params.target
+		},
+		isAdmin(){ return this.$store.state.isAdmin }
+	},
+	mounted(){
+		if(this.isAdmin === false){
+			this.$router.push({ path: '/admin/login' })
 		}
 	}
 }

@@ -39,6 +39,14 @@ export default {
 				}
 			})
 		}
+	},
+	computed: {
+		isAdmin(){ return this.$store.state.isAdmin }
+	},
+	mounted(){
+		if(this.isAdmin === false){
+			this.$router.push({ path: '/admin/login' })
+		}
 	}
 }
 </script>
