@@ -19,11 +19,17 @@ import EnotServiceRequestCard from './EnotServiceRequestCard'
 /** Footer */
 import EnotServiceFooter from './EnotServiceFooter'
 
+/** Admin */
+import EnotServiceAdminToolbar from '../admin/EnotServiceAdminToolbar'
+import EnotServiceAdminGrud from '../admin/EnotServiceAdminGrud'
+
 export default {
     EnotServiceToolbar, EnotServiceHeader, EnotServiceHeaderCard,
     EnotServiceChoice, EnotServicePriceCard, EnotServiceCleanerCard,
     EnotServiceChoiceCard, EnotServiceOrderCard, EnotServiceRequestCard,
     
     EnotServiceCleaningBlock, EnotServicePriceBlock, EnotServiceCleanersBlock, EnotServiceRequestBlock,
-    EnotServiceFooter
+    EnotServiceFooter,
+
+    EnotServiceAdminToolbar, EnotServiceAdminGrud
 }
