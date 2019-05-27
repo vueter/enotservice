@@ -5,6 +5,7 @@ import Order from './views/Order.vue'
 import Payment from './views/Payment'
 import Admin from './admin/Home'
 import Grud from './admin/Grud'
+import Upload from './admin/Upload'
 
 Vue.use(Router)
 
@@ -16,6 +17,7 @@ export default new Router({
     { path: '/order', name: 'order', component: Order },
     { path: '/payment', name: 'payment', component: Payment },
     { path: '/admin/home', name: 'admin', component: Admin },
-    { path: '/admin/grud/:target', name: 'grud', component: Grud }
+    { path: '/admin/grud/:target', name: 'grud', component: Grud },
+    { path: '/admin/upload', name: 'upload', component: Upload }
   ]
 })

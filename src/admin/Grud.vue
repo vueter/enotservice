@@ -27,6 +27,40 @@ const schema = {
 		segments: [
 			[{ name: 'name', text: 'City name', type: 'text', value: '' }]
 		]
+	},
+	'order-groups': {
+		segments: [
+			[{ name: 'name', text: 'Group name', type: 'text', value: '' }]
+		]
+	},
+	'order-elements': {
+		segments: [
+			[{ name: 'order', text: 'Title', type: 'combobox', value: '', items: ['Где вы живете?', 'Тип уборки', 'Вы можете выбрать дополнительные услуги:','Как часто нам убираться у Вас?'] }],
+			[{ name: 'text', text: 'Text', type: 'text', value: '' }],
+			[{ name: 'icon', text: 'Icon', type: 'text', value: '' }],
+			[{ name: 'price', text: 'Price', type: 'number', value: 5000 }],
+			[{ name: 'discount', text: 'Discount', type: 'number', value: 0 }],
+			[{ name: 'name', text: 'name', type: 'text', value: ''}],
+			[{ name: 'kind', text: 'Type', type: 'combobox', value: '', items: ['Choice', 'Radio', 'Counter'] }],
+			[{ name: 'position', text: 'Position', type: 'number', value: '' }]
+		]
+	},
+	'info': {
+		segments: [
+			[{ name: 'name', text: 'Name', type: 'text', value: '' }],
+			[{ name: 'value', text: 'Value', type: 'text', value: '' }],
+		]
+	},
+	'slider': {
+		segments: [
+			[{ name: 'name', text: 'Name', type: 'text', value: '' }],
+			[{ name: 'path', text: 'Image name', type: 'text', value: '' }]
+		]
+	},
+	'requests': {
+		segments: [
+			[{ name: 'text', text: 'Text', type: 'text', value: '' }]
+		]
 	}
 }
 export default {

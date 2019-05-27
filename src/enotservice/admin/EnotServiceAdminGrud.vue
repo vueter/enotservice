@@ -31,8 +31,9 @@
 				</v-toolbar>
 				<v-card-text>
 					<v-layout row wrap v-for="(segment, index) in schema.segments" v-bind:key="index">
-						<v-flex v-for="(component, index) in segment" v-bind:key="index">	
-							<v-text-field v-bind:type="component.type" v-bind:label="component.text" color="info" box v-model="component.value"/>
+						<v-flex v-for="(component, index) in segment" v-bind:key="index">
+							<v-combobox v-if="component.type === 'combobox'" v-bind:items="component.items" v-bind:label="component.text" color="info" box v-model="component.value"/>
+							<v-text-field v-else v-bind:type="component.type" v-bind:label="component.text" color="info" box v-model="component.value"/>
 						</v-flex>
 					</v-layout>
 					<v-btn color="info" block round large v-on:click="submit()">{{submitText}}</v-btn>
@@ -43,9 +44,11 @@
 </template>
 <script>
 import axios from 'axios'
+
 export default {
 	name: 'es-admin-grud',
 	props: ['schema', 'target'],
+	
 	data: () => ({
 		items: [],
 		submitText: 'Create',

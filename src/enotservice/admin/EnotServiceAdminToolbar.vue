@@ -33,8 +33,11 @@ export default {
 			{ text: 'Users', link: '/admin/grud/users' },
 			{ text: 'Cities', link: '/admin/grud/cities' },
 			{ text: 'Regison', link: '/admin/grud/regions' },
-			{ text: 'Order', link: '/admin/order' },
-			{ text: 'Info', link: '/admin/info' },
+			{ text: 'Order Elements', link: '/admin/grud/order-elements' },
+			{ text: 'Info', link: '/admin/grud/info' },
+			{ text: 'Slider', link: '/admin/grud/slider' },
+			{ text: 'Requests', link: '/admin/grud/requests' },
+			{ text: 'File Upload', link: '/admin/upload' }
 		]
 	})
 }
