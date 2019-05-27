@@ -148,6 +148,15 @@ export default {
 	},
 	mounted(){
 		this.update()
+	},
+	watch:{
+		'$route.params.target':{
+			handler: function(){
+				this.update()
+			},
+			deep: true,
+			immediate: true
+		}
 	}
 }
 </script>

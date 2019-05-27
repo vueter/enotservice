@@ -31,8 +31,6 @@ export default {
 		navs: [
 			{ text: 'Home', link: '/admin/home' },
 			{ text: 'Users', link: '/admin/grud/users' },
-			{ text: 'Payments', link: '/admin/grud/payments' },
-			{ text: 'Orders', link: '/admin/grud/orders' },
 			{ text: 'Cities', link: '/admin/grud/cities' },
 			{ text: 'Regison', link: '/admin/grud/regions' },
 			{ text: 'Order', link: '/admin/order' },

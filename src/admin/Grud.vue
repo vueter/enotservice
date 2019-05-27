@@ -17,6 +17,16 @@ const schema = {
 			[{ name: 'phonenumber', text: 'Phone number', type: 'text', value: '' }],
 			[{ name: 'email', text: 'Email', type: 'text', value: '' }]
 		]
+	},
+	'cities': {
+		segments: [
+			[{ name: 'name', text: 'City name', type: 'text', value: '' }]
+		]
+	},
+	'regions': {
+		segments: [
+			[{ name: 'name', text: 'City name', type: 'text', value: '' }]
+		]
 	}
 }
 export default {
