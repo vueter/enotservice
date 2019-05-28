@@ -16,40 +16,12 @@
 					<br/>
 					<v-card class="es-card-header">
 						<v-card-title>РАССКАЖИТЕ НАМ О СВОЕЙ КВАРТИРЕ</v-card-title>
-						<v-divider></v-divider>
-						<v-card-text>
-							Где вы живете?
-							<v-layout row wrap>
-								<v-flex md3 xs6 pa-1>
-									<es-choice-card/>
-								</v-flex>
-								<v-flex md3 xs6 pa-1>
-									<es-choice-card/>
-								</v-flex>
-								<v-flex md6 xs12 pa-1>
-									<es-choice v-bind:items="types" v-bind:circle="true"/>
-									<es-choice v-bind:items="numberRooms" v-bind:circle="false"/>
-								</v-flex>
-							</v-layout>
-						</v-card-text>
-						<v-divider></v-divider>
-						<v-card-text>
-							Тип уборки
-							<v-layout row wrap>
-								<v-flex md3 xs6 pa-1 v-for="i in 4" v-bind:key="i">
-									<es-choice-card/>
-								</v-flex>
-							</v-layout>
-						</v-card-text>
-						<v-divider></v-divider>
-						<v-card-text>
-							Вы можете выбрать дополнительные услуги:
-							<v-layout row wrap>
-								<v-flex md3 xs6 pa-1 v-for="i in 12" v-bind:key="i">
-									<es-choice-card/>
-								</v-flex>
-							</v-layout>
-						</v-card-text>
+						<template v-for="(item, index) in schema">
+							<template>
+								<v-divider v-bind:key="'divider' + index"></v-divider>
+							</template>
+							<OrderDisplayer v-bind:data="item" v-bind:key="index"></OrderDisplayer>
+						</template>
 					</v-card>
 					<v-card class="es-card-bottom">
 						<v-card-title>КУДА НАМ ПРИЕХАТЬ?</v-card-title>
@@ -95,14 +67,43 @@
 	</v-content>
 </template>
 <script>
+import axios from 'axios'
+import OrderDisplayer from '@/components/OrderDisplayer'
 export default {
 	name: 'order',
+	components: {OrderDisplayer},
 	data: () => ({
 		step : 2,
 		types: ['Квартира', 'Свой дом'],
 		numberRooms: ['1 комнатная', '2-х комнатная', '3-х комнатная', '4-х комнатная', '5-х комнатная'],
 		cities: ['Toshkent', 'Samarkand'],
-		regions: ['Chilonzor', 'Olmazor']
-	})
+		regions: ['Chilonzor', 'Olmazor'],
+		schema: []
+	}),
+	methods: {
+		getWhere(data, name, target, excludes = []){
+			var items = []
+			for(const item of data){
+				if(item[name] === target && excludes.indexOf(item.name) === -1){
+					items.push(item)
+				}
+			}
+			return items
+		}
+	},
+	mounted(){
+		axios({
+			method: 'GET',
+			url: 'http://localhost:3000/schema',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept-Version': '1.0.x'
+			}
+		}).then(response => {
+			if(response.data.error == 'Ok'){
+				this.schema = response.data.data
+			}
+		})
+	}
 }
 </script>

@@ -125,7 +125,7 @@ $secondary-color: #d2d2d2;
 .es-card{
     border: 1px solid $secondary-color !important;
     border-radius: 4px;
-    height: 130px;
+    min-height: 100px;
     cursor: pointer;
 }
 .es-card:hover{
@@ -170,6 +170,10 @@ $secondary-color: #d2d2d2;
 }
 .es-request-card.active{
     border: 2px solid $primary-color !important;
+}
+
+.active-choice-card{
+    border: 1px solid $primary-color !important;
 }
 
 @media only screen and (min-width: 1000px){

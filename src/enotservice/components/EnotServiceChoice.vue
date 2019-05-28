@@ -4,7 +4,7 @@
 			<v-btn icon v-on:click="update(activeIndex - 1)"><v-icon>chevron_left</v-icon></v-btn>
 		</v-flex>
 		<v-flex md8 xs8 class="es-choice-content">
-			{{ items[activeIndex] }}
+			{{ items[activeIndex].text }}
 		</v-flex>
 		<v-flex md2 xs2 class="es-choice-btn">
 			<v-btn icon v-on:click="update(activeIndex + 1)"><v-icon>chevron_right</v-icon></v-btn>
@@ -24,6 +24,9 @@ export default {
 		circle: {
 			type: Boolean,
 			default: false
+		},
+		name: {
+			type: String
 		}
 	},
 	data: () => {
