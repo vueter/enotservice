@@ -1,5 +1,5 @@
 <template>
-	<v-footer class="floating" height="auto" color="primary lighten-1">
+	<v-footer class="floating" height="auto" color="primary lighten-1" id="contact">
 		<v-layout justify-center row wrap>
 			<v-container>
 				<v-layout row wrap>

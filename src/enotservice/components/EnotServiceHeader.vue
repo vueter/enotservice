@@ -1,5 +1,5 @@
 <template>
-	<div class="es-header" v-bind:style="'height: ' + getheight()">
+	<div class="es-header" v-bind:style="'height: ' + getheight()" id="header">
 		<es-toolbar />
 		<v-container class="main">
 			<v-layout row wrap>
@@ -20,7 +20,7 @@
 				</v-flex>
 			</v-layout>
 		</v-container>
-		<v-content class="es-header-bottom">
+		<v-content class="es-header-bottom" id="about">
 			<v-container>
 				<v-layout row wrap>
 					<v-flex md4>

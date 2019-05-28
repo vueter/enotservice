@@ -1,5 +1,5 @@
 <template>
-	<div class="floating">
+	<div class="floating" id="guarantees">
 		<v-container>
 			<h3 class="block-title">Часто задаваемы вопросы</h3>
 			<center>

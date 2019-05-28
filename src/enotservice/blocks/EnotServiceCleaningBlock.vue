@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-secondary floating">
+	<div class="bg-secondary floating" id="performers">
 		<v-container>
 			<h3 class="block-title">Как мы делаем уборку квартиры</h3>
 			<center>

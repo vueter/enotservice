@@ -15,7 +15,9 @@
 						<v-toolbar-side-icon class="hidden-sm-and-up" v-on="on"></v-toolbar-side-icon>
 					</template>
 					<v-list>
-						<v-list-tile v-on:click="go('/')" v-for="(nav, index) in navs" v-bind:key="index"><v-list-tile-title>{{nav}}</v-list-tile-title></v-list-tile>
+						<v-list-tile v-bind:href="nav.link" v-for="(nav, index) in navs" v-bind:key="index"><v-list-tile-title>
+							{{nav.text}}
+						</v-list-tile-title></v-list-tile>
 					</v-list>
 				</v-menu>
 				<v-menu v-bind:nudge-width="200" offset-y>
@@ -54,7 +56,15 @@ export default {
 	mixins: [ Routable ],
 	data: () => {
 		return {
-			navs: ['Главная', 'О нас', 'Стоимость услуг', 'Исполнители', 'Отзывы', 'Гарантии', 'Контакты']
+			navs: [
+				{text: 'Главная', link:'/#header'},
+				{text: 'О нас', link:'/#about'},
+				{text: 'Стоимость услуг', link: '/#services'},
+				{text: 'Исполнители', link: '/#performers'},
+				{text: 'Отзывы', link: '/#reviews'},
+				{text: 'Гарантии', link: '/#guarantees'},
+				{text: 'Контакты', link: '/#contact'}
+			]
 		}
 	}
 }
