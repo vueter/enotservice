@@ -9,6 +9,9 @@ import Upload from './admin/Upload'
 import AdminLogin from './admin/Login'
 import AdminLogout from './admin/Logout'
 import AdminMain from './admin/Main'
+import Profile from './views/Profile'
+import Login from './views/Login'
+import Register from './views/Register'
 
 Vue.use(Router)
 
@@ -19,6 +22,9 @@ export default new Router({
     { path: '/', name: 'home', component: Home },
     { path: '/order', name: 'order', component: Order },
     { path: '/payment', name: 'payment', component: Payment },
+    { path: '/profile', name: 'profile', component: Profile },
+    { path: '/login', name: 'login', component: Login },
+    { path: '/register', name: 'register', component: Register },
     { path: '/admin', name: 'main', component: AdminMain },
     { path: '/admin/home', name: 'admin', component: Admin },
     { path: '/admin/grud/:target', name: 'grud', component: Grud },
