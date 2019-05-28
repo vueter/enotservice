@@ -1,6 +1,6 @@
 <template>
 	<v-footer class="floating" height="auto" color="primary lighten-1">
-    <v-layout justify-center row wrap>
+		<v-layout justify-center row wrap>
 			<v-container>
 				<v-layout row wrap>
 					<v-flex md4 sm12 xs12>
@@ -44,11 +44,11 @@
 					</v-flex>
 				</v-layout>
 			</v-container>
-      <v-flex primary lighten-2 py-3 text-xs-center white--text xs12>
-        &copy;2019 — <strong>Enot Service</strong> Все права защищены
-      </v-flex>
-    </v-layout>
-  </v-footer>
+			<v-flex primary lighten-2 py-3 text-xs-center white--text xs12>
+				&copy;2019 — <strong>Enot Service</strong> Все права защищены
+			</v-flex>
+		</v-layout>
+	</v-footer>
 </template>
 <script>
 export default {

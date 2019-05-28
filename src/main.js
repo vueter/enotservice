@@ -8,6 +8,9 @@ import './registerServiceWorker'
 
 Vue.config.productionTip = false
 
+Vue.config.keyCodes.f2 = 113
+
+
 new Vue({
   router,
   store,

@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isAdmin: false,
-    isGuest: true
+    isGuest: true,
+    user: null
   },
   mutations: {
     adminLogout(state){
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     adminLogin(state){
       state.isAdmin = true
+    },
+    updateUser(state, paylod){
+      state.user = paylod
     },
     login(state){
       state.isGuest = false

@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-on:click.ctrl="toAdmin()">
     <router-view/>
   </v-app>
 </template>
@@ -10,6 +10,11 @@ export default {
   data () {
     return {
       //
+    }
+  },
+  methods: {
+    toAdmin(){
+      this.$routes.push({ path: '/admin' })
     }
   }
 }
