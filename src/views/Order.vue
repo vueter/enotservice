@@ -16,7 +16,6 @@
 					<br/>
 					<v-card class="es-card-header">
 						<v-card-title>РАССКАЖИТЕ НАМ О СВОЕЙ КВАРТИРЕ</v-card-title>
-						<v-btn v-on:click="show()">SHOw</v-btn>
 						<template v-for="(item, index) in schema">
 							<template>
 								<v-divider v-bind:key="'divider' + index"></v-divider>
@@ -39,16 +38,16 @@
 									<v-text-field box label="Улица" v-model="street"/>
 								</v-flex>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-text-field box label="Номер дома" v-model="home"/>
+									<v-text-field box label="Номер дома" type="number" v-model="home"/>
 								</v-flex>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-text-field box label="Подъезд" v-model="tier"/>
+									<v-text-field box label="Подъезд" type="number" v-model="tier"/>
 								</v-flex>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-text-field box label="Квартира" v-model="accommodation"/>
+									<v-text-field box label="Квартира" type="number" v-model="accommodation"/>
 								</v-flex>
 							</v-layout>
-							<v-btn color="primary" block round large to="/payment">Продолжить</v-btn>
+							<v-btn color="primary" block round large v-on:click="createOrder">Продолжить</v-btn>
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -83,7 +82,7 @@ export default {
 		city: '',
 		region: '',
 		street: '',
-		home: null,
+		home: 1,
 		tier: null,
 		accommodation: null,
 	}),
@@ -113,8 +112,30 @@ export default {
 			}
 			return result
 		},
-		show(){
-			console.log({
+		createOrder(){
+			var price = 0;
+			for(var i = 0; i < this.schema.length; i++){
+				for(const item of this.schema[i].body){
+					if(item.kind === 'Counter'){
+						const values = this.values[i][item.name]
+						for(var i = 0; i < values.length; i++){
+							price += item.items[i].price * values[i].value
+						}
+					}
+					else{
+						const name = this.values[i][item.name]
+						var p = 0
+						for(const __item of item.items){
+							if(__item.text == name){
+								p = __item.price
+							}
+						}
+						price += p
+					}
+					
+				}
+			}
+			const order = {
 				user: this.user._id,
 				city: this.city,
 				region: this.region,
@@ -122,7 +143,20 @@ export default {
 				home: this.home,
 				tier: this.tier,
 				accommodation: this.accommodation,
-				segments: this.values
+				segments: this.values,
+				price: price
+			}
+			axios({
+				method: 'POST',
+				url: 'http://localhost:3000/orders/create',
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept-Version': '1.0.0'
+				}
+			}).then(response => {
+				if(response.data.error == 'Ok'){
+					this.$router.push({ path: '/payment/' + response.data.insertedId })
+				}
 			})
 		}
 	},
