@@ -137,9 +137,6 @@ export default {
 					}
 				}
 			}
-			else{
-				console.log('ERROR')
-			}
 		}
 	}
 }

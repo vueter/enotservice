@@ -42,10 +42,11 @@ export default {
 		inviteCode: ''
 	}),
 	computed: {
-		isGuest(){ return this.$store.state.isGuest }
+		isGuest(){ return this.$store.state.isGuest },
+		user(){ return this.$store.state.user }
 	},
 	mounted(){
-		if(this.isGuest === true){
+		if(this.isGuest === true || this.user === null){
 			this.$router.push({ path: '/login' })
 		}
 	}
