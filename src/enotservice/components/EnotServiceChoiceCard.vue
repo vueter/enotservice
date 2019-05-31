@@ -1,6 +1,6 @@
 <template>
-	<v-card flat class="es-card">
-		<v-card-text v-on:click="setActive()">
+	<v-card flat class="es-card" v-bind:class="isActive ? 'active-choice-card' : ''">
+		<v-card-text v-on:click="onClick()">
 			<center>
 				<img v-bind:src="'http://localhost:3000/uploads/' + schema.icon">
 				<p style="font-size:18px">{{ schema.text }}</p>
@@ -36,10 +36,8 @@ export default {
 		name: {
 			type: String
 		},
-		result: {
-			type: Object,
-			deep: true
-		}
+		setActive: Function,
+		index: Number
 	},
 	data: () => ({
 		count: 0
@@ -49,19 +47,26 @@ export default {
 			if(this.count > 0){
 				this.count -= 1
 			}
+			this.updateCount()
 		},
 		plus(){
 			if(this.count < 5){
 				this.count += 1
 			}
+			this.updateCount()
 		},
-		setActive(){
+		updateCount(){
+			this.setActive(this.name, { name: this.schema.text, value: this.count }, this.index)
+		},
+		onClick(){
 			if(this.kind == 'Counter'){
 				this.plus()
+				this.updateCount()
 			}
 			else{
-				this.$parent.setActive(this.name, this.schema.text)
+				this.setActive(this.name, this.schema.text)
 			}
+			this.$forceUpdate()
 		}
 	}
 }

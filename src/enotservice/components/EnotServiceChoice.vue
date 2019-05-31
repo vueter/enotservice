@@ -27,7 +27,8 @@ export default {
 		},
 		name: {
 			type: String
-		}
+		},
+		setActive: Function
 	},
 	data: () => {
 		return {
@@ -49,6 +50,7 @@ export default {
 					}
 				}
 			}
+			this.setActive(this.name, this.items[this.activeIndex].text)
 		}
 	}
 }

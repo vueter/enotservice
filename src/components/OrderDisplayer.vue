@@ -1,18 +1,29 @@
 <template>
 	<v-card-text>
-		{{data.title}} <v-btn v-on:click="show()">Show</v-btn>
+		{{data.title}}
 		<v-layout row wrap>
 			<template v-for="(item, index) in data.body">
 				<template v-if="item.kind !== 'Choice'">
 					<v-flex md3 xs12 sm12 pa-1 v-for="(component, jindex) in item.items" v-bind:key="item.name + '_' + index + '_' + jindex">
-							<es-choice-card v-bind:schema="component" v-bind:name="item.name" v-bind:result="result" v-bind:index="jindex" v-bind:kind="item.kind" v-bind:key="jindex"/>
+						<es-choice-card
+							v-bind:isActive="reactiveValue[item.name] == component.text"
+							v-bind:setActive="setActive" 
+							v-bind:schema="component" 
+							v-bind:name="item.name" 
+							v-bind:index="jindex" 
+							v-bind:kind="item.kind" 
+							v-bind:key="jindex"/>
 					</v-flex>
 				</template>
 			</template>
 			<v-flex md6 xs12 sm12 pa-1 v-if="hasChoice(data.body)">
 				<template v-for="(item, index) in data.body">
 					<template v-if="item.kind === 'Choice'">
-						<es-choice v-bind:key="item.name + '_' + index" v-bind:items="item.items" v-bind:name="item.name"/>
+						<es-choice
+							v-bind:key="item.name + '_' + index" 
+							v-bind:items="item.items" 
+							v-bind:setActive="setActive" 
+							v-bind:name="item.name"/>
 					</template>
 				</template>
 			</v-flex>
@@ -28,11 +39,12 @@ export default {
 			default(){
 				return null
 			}
+		},
+		value: {
+			type: Object,
+			default: () => ({})
 		}
 	},
-	data: () => ({
-		result: {}
-	}),
 	methods: {
 		hasChoice(data){
 			for(const item of data){
@@ -42,25 +54,21 @@ export default {
 			}
 			return false
 		},
-		setActive(name, value){
-			this.result[name] = value
-		},
-		show(){
-			console.log(this.result)
-		}
-	},
-	created(){
-		for(const item of this.data.body){
-			if(item.kind === 'Counter'){
-				var array = []
-				for(const _ of item.items){
-					array.push(0)
-				}
-				this.result[item.name] = array
+		setActive(name, value, index){
+			if(index !== undefined){
+				this.value[name][index] = value
+				this.$emit('input', this.value)
 			}
 			else{
-				this.result[item.name] = item.items[0].text
+				this.value[name] = value
+				this.$emit('input', this.value)
 			}
+			this.$forceUpdate()
+		}
+	},
+	computed: {
+		reactiveValue(){
+			return this.value
 		}
 	}
 }

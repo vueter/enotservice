@@ -16,11 +16,12 @@
 					<br/>
 					<v-card class="es-card-header">
 						<v-card-title>РАССКАЖИТЕ НАМ О СВОЕЙ КВАРТИРЕ</v-card-title>
+						{{values}}
 						<template v-for="(item, index) in schema">
 							<template>
 								<v-divider v-bind:key="'divider' + index"></v-divider>
 							</template>
-							<OrderDisplayer v-bind:data="item" v-bind:key="index"></OrderDisplayer>
+							<OrderDisplayer v-bind:data="item" v-model="values[index]" v-bind:value="values[index]" v-bind:key="index"></OrderDisplayer>
 						</template>
 					</v-card>
 					<v-card class="es-card-bottom">
@@ -89,6 +90,22 @@ export default {
 				}
 			}
 			return items
+		},
+		getResult(data){
+			const result = {}
+			for(const item of data.body){
+				if(item.kind === 'Counter'){
+					var array = []
+					for(const item of item.items){
+						array.push({ name: item.text, value: 0 })
+					}
+					result[item.name] = array
+				}
+				else{
+					result[item.name] = item.items[0].text
+				}
+			}
+			return result
 		}
 	},
 	mounted(){
@@ -104,6 +121,15 @@ export default {
 				this.schema = response.data.data
 			}
 		})
+	},
+	computed: {
+		values(){
+			const values = []
+			for(var i = 0; i < this.schema.length; i++){
+				values.push(this.getResult(this.schema[i]))
+			}
+			return values
+		}
 	}
 }
 </script>
