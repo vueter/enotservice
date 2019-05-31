@@ -12,7 +12,7 @@
 			</v-tabs>
 			<div v-for="(tab, index) in tabs" v-bind:key="index">
 				<template v-if="index == activeTab">
-					<img v-if="tab.image" class="image-center" src="../assets/images/cleaning.png">
+					<img v-if="tab.path" class="image-center" v-bind:src="makePath(tab.path)">
 					<img v-else class="image-center" src="../assets/images/cleaning.png">
 				</template>
 			</div>
@@ -20,20 +20,34 @@
 	</div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
 	name: 'es-cleaning-block',
-	props: {
-		tabs: {
-			type: Array,
-			default: () => {
-				return [{name: 'Жилая комната'}, {name: 'Кухня'}, {name: 'Ванная и туалет'}, {name: 'Коридор'}, {name: 'Дополнительные услуги'}]
-			}
-		}
-	},
 	data: () => {
 		return {
-			activeTab: null
+			activeTab: null,
+			tabs: []
 		}
+	},
+	methods: {
+		makePath(path){
+			return 'http://localhost:3000/uploads/' + path
+		}
+	},
+	mounted(){
+		axios({
+			method: 'GET',
+			url: 'http://localhost:3000/slider',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept-Version': '1.x'
+			}
+		}).then(response => {
+			if(response.data.error === 'Ok'){
+				this.tabs = response.data.data
+			}
+		})
 	}
 }
 </script>
