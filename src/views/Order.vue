@@ -148,7 +148,7 @@ export default {
 			}
 			axios({
 				method: 'POST',
-				url: 'http://localhost:3000/orders/create',
+				url: 'http://enotservice.uz/api/orders/create',
 				headers: {
 					'Content-Type': 'application/json',
 					'Accept-Version': '1.0.0'
@@ -167,7 +167,7 @@ export default {
 		}
 		axios({
 			method: 'GET',
-			url: 'http://localhost:3000/schema',
+			url: 'http://enotservice.uz/api/schema',
 			headers: {
 				'Content-Type': 'application/json',
 				'Accept-Version': '1.0.x'
@@ -179,7 +179,7 @@ export default {
 		})
 		axios({
 			method: 'GET',
-			url: 'http://localhost:3000/cities',
+			url: 'http://enotservice.uz/api/cities',
 			headers: {
 				'Content-Type': 'application/json',
 				'Accept-Version': '1.0.x'
@@ -196,7 +196,7 @@ export default {
 		})
 		axios({
 			method: 'GET',
-			url: 'http://localhost:3000/regions',
+			url: 'http://enotservice.uz/api/regions',
 			headers: {
 				'Content-Type': 'application/json',
 				'Accept-Version': '1.0.x'

@@ -89,7 +89,7 @@ export default {
 					if(this.state == 1){
 						axios({
 							method: 'POST',
-							url: 'http://localhost:3000/verify',
+							url: 'http://enotservice.uz/api/verify',
 							data: { phonenumber: this.phonenumber },
 							headers: {
 								'Accept-Version': '1.x',
@@ -104,7 +104,7 @@ export default {
 					else{
 						axios({
 							method: 'POST',
-							url: 'http://localhost:3000/verify/code',
+							url: 'http://enotservice.uz/api/verify/code',
 							data: { phonenumber: this.phonenumber, smscode: this.smscode },
 							headers: {
 								'Accept-Version': '1.0.0',
@@ -114,7 +114,7 @@ export default {
 							if(response.data.error === 'Ok'){
 								axios({
 									method: 'POST',
-									url: 'http://localhost:3000/register',
+									url: 'http://enotservice.uz/api/register',
 									data: {
 										username: this.username,
 										password: this.password,

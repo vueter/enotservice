@@ -33,7 +33,7 @@ export default {
 		fileUpdate(file){
 			var formData = new FormData()
 			formData.append('image', file)
-			axios.post('http://localhost:3000/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(response => {
+			axios.post('http://enotservice.uz/api/upload', formData, { headers: { 'Content-Type': 'multipart/form-data' } }).then(response => {
 				if(response.data.error === 'Ok'){
 					this.name = response.data.path
 				}

@@ -27,6 +27,9 @@
 					</template>
 				</template>
 			</v-flex>
+			<v-flex md6 sm12 xs12 pa-1 v-if="isPayment">
+				Оплата картой посредством платежной системы CLICK или Payme наиболее рекомендуемый способ оплаты. Тут будет дополнительный описательный текст или его не будет вовсе
+			</v-flex>
 		</v-layout>
 	</v-card-text>
 </template>
@@ -43,6 +46,10 @@ export default {
 		value: {
 			type: Object,
 			default: () => ({})
+		},
+		isPayment: {
+			type: Boolean,
+			default: false
 		}
 	},
 	methods: {

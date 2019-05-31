@@ -1,7 +1,7 @@
 <template>
 	<v-content>
 		<es-toolbar />
-		<v-container>
+		<v-container v-if="order">
 			<v-layout>
 				<v-flex md7 offset-md1 pa-3>
 					<v-stepper v-model="step" flat>
@@ -16,20 +16,12 @@
 					<br/>
 					<v-card>
 						<v-card-title>ИНФОРМАЦИЯ О ПЛАТЕЖЕ</v-card-title>
-						<v-divider></v-divider>
-						<v-card-text>
-							<v-layout row wrap>
-                                <v-flex md3 xs6 sm6 pa-1>
-                                    <!--<es-choice-card />-->
-                                </v-flex>
-                                <v-flex md3 sm6 xs6 pa-1>
-                                    <!--<es-choice-card />-->
-                                </v-flex>
-                                <v-flex md6 sm12 xs12 pa-1>
-                                    Оплата картой посредством платежной системы CLICK или Payme наиболее рекомендуемый способ оплаты. Тут будет дополнительный описательный текст или его не будет вовсе
-                                </v-flex>
-							</v-layout>
-						</v-card-text>
+						<template v-for="(item, index) in schema">
+							<template>
+								<v-divider v-bind:key="'divider' + index"></v-divider>
+							</template>
+							<OrderDisplayer v-bind:isPayment="true" v-bind:data="item" v-model="values[index]" v-bind:value="values[index]" v-bind:key="index"></OrderDisplayer>
+						</template>
                         <v-card-text>
                             Введите промокод в поле ниже, если он у вас есть
                             <v-layout row wrap>
@@ -43,7 +35,7 @@
                         </v-card-text>
                         <v-divider></v-divider>
                         <v-card-text>
-                            <v-btn block color="primary" round large>Перейти к оплате</v-btn>
+                            <v-btn block color="primary" round large v-on:click="pay">Перейти к оплате</v-btn>
                         </v-card-text>
 					</v-card>
 				</v-flex>
@@ -64,16 +56,61 @@
 </template>
 <script>
 import axios from 'axios'
+import OrderDisplayer from '@/components/OrderDisplayer'
 export default {
 	name: 'order',
 	data: () => ({
 		step : 3,
-		order: null
+		order: null,
+		schema: [],
+		dialog: true
 	}),
+	components: { OrderDisplayer },
+	methods: {
+		getResult(data){
+			const result = {}
+			for(const item of data.body){
+				if(item.kind === 'Counter'){
+					var array = []
+					for(const item of item.items){
+						array.push({ name: item.text, value: 0 })
+					}
+					result[item.name] = array
+				}
+				else{
+					result[item.name] = item.items[0].text
+				}
+			}
+			return result
+		},
+		pay(){
+			if(this.values[0].payment === 'CLICK'){
+				const request = {
+					phonenumber: '+998' + this.user.phonenumber,
+					amount: this.order.data[0].price
+				}
+				axios({
+					method: 'POST',
+					url: 'http://enotservice.uz/api/pay',
+					data: request,
+					headers: {
+						'Content-Type': 'application/json',
+						'Accept-Version': '1.0.0'
+					}
+				}).then(response => {
+					console.log(response.data)
+				})
+			}
+		}
+	},
 	mounted(){
+		if(!this.user){
+			this.$router.push({ path: '/register' })
+		}
+
 		axios({
 			method: 'POST',
-			url: 'http://localhost:3000/orders',
+			url: 'http://enotservice.uz/api/orders',
 			data: {
 				_id: this.$route.params.order_id
 			},
@@ -82,8 +119,33 @@ export default {
 				'Accept-Version': '1.0.0'
 			}
 		}).then(response => {
-			console.log(response.data)
+			this.order = response.data
 		})
+		
+		axios({
+			method: 'GET',
+			url: 'http://enotservice.uz/api/payment-schema',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept-Version': '1.0.x'
+			}
+		}).then(response => {
+			if(response.data.error == 'Ok'){
+				this.schema = response.data.data
+			}
+		})
+	},
+	computed: {
+		values(){
+			const values = []
+			for(var i = 0; i < this.schema.length; i++){
+				values.push(this.getResult(this.schema[i]))
+			}
+			return values
+		},
+		user(){
+			return this.$store.state.user
+		}
 	}
 }
 </script>

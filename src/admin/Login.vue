@@ -34,7 +34,7 @@ export default {
 			if(this.username.length > 0 && this.password.length > 0){
 				axios({
 					method: 'POST',
-					url: 'http://localhost:3000/admin/login',
+					url: 'http://enotservice.uz/api/admin/login',
 					data: { username: this.username, password: this.password },
 					headers: {
 						'Accept-Version': '1.x'

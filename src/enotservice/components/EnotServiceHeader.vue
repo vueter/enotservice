@@ -72,7 +72,7 @@ const mixin = {
     mounted(){
       axios({
         method: 'GET',
-        url: 'http://localhost:3000/schema',
+        url: 'http://enotservice.uz/api/schema',
         headers: {
           'Content-Type': 'application/json',
           'Accept-Version': '1.0.x'

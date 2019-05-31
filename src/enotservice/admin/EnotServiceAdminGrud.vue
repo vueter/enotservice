@@ -75,7 +75,7 @@ export default {
 			if(this.updateId === null){
 				axios({
 					method: 'POST',
-					url: 'http://localhost:3000/' + this.target + '/create',
+					url: 'http://enotservice.uz/api/' + this.target + '/create',
 					headers: {
 						'Accept-Version': '1.0.0',
 						'Content-Type': 'application/json'
@@ -88,7 +88,7 @@ export default {
 			else{
 				axios({
 					method: 'POST',
-					url: 'http://localhost:3000/' + this.target + '/' + this.updateId + '/update',
+					url: 'http://enotservice.uz/api/' + this.target + '/' + this.updateId + '/update',
 					headers: {
 						'Accept-Version': '1.0.0',
 						'Content-Type': 'application/json'
@@ -119,7 +119,7 @@ export default {
 			const id = props.item._id
 			axios({
 				method: 'DELETE',
-				url: 'http://localhost:3000/' + this.target + '/' + id + '/delete',
+				url: 'http://enotservice.uz/api/' + this.target + '/' + id + '/delete',
 				headers: {
 					'Accept-Version': '1.0.0',
 					'Content-Type': 'application/json'
@@ -131,7 +131,7 @@ export default {
 		update(){
 			axios({
 				method: 'GET',
-				url: 'http://localhost:3000/' + this.target,
+				url: 'http://enotservice.uz/api/' + this.target,
 				headers: {
 					'Accept-Version': '1.0.0'
 				}

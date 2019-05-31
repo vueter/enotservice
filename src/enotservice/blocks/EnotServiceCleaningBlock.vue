@@ -32,13 +32,13 @@ export default {
 	},
 	methods: {
 		makePath(path){
-			return 'http://localhost:3000/uploads/' + path
+			return 'http://enotservice.uz/api/uploads/' + path
 		}
 	},
 	mounted(){
 		axios({
 			method: 'GET',
-			url: 'http://localhost:3000/slider',
+			url: 'http://enotservice.uz/api/slider',
 			headers: {
 				'Content-Type': 'application/json',
 				'Accept-Version': '1.x'

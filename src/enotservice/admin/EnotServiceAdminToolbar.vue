@@ -34,6 +34,7 @@ export default {
 			{ text: 'Cities', link: '/admin/grud/cities' },
 			{ text: 'Regison', link: '/admin/grud/regions' },
 			{ text: 'Order Elements', link: '/admin/grud/order-elements' },
+			{ text: 'Payment Elements', link: '/admin/grud/payment-elements' },
 			{ text: 'Info', link: '/admin/grud/info' },
 			{ text: 'Slider', link: '/admin/grud/slider' },
 			{ text: 'Requests', link: '/admin/grud/requests' },

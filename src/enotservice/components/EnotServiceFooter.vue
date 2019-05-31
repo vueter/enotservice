@@ -72,7 +72,7 @@ export default {
 	mounted(){
 		axios({
 			method: 'GET',
-			url: 'http://localhost:3000/info',
+			url: 'http://enotservice.uz/api/info',
 			headers: {
 				'Content-Type': 'application/json',
 				'Accept-Version': '1.x'
