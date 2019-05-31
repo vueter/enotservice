@@ -7,7 +7,9 @@
 			</center>
 			<v-layout row wrap v-if="schema !== null">
 				<v-flex md3 xs12 sm12 pa-1 v-for="(item, index) in schema[0].body[1].items" v-bind:key="index">
-					<es-price-card v-bind:image="'room-' + (index + 1)" v-bind:text="item.text" v-bind:price="'от ' + item.price + ' сум'"/>
+					<template v-if="index < 3">
+						<es-price-card v-bind:image="'room-' + (index + 1)" v-bind:text="item.text" v-bind:price="'от ' + item.price + ' сум'"/>
+					</template>
 				</v-flex>
 				<v-flex md3 xs12 sm12 pa-1>
 					<es-price-card image="home" text="Свой дом" v-bind:price="'от ' + schema[0].body[0].items[1].price + ' сум'"/>

@@ -7,26 +7,32 @@
 			</center>
 			<v-layout row wrap>
 				<v-flex md6 v-for="(request, index) in requests" v-bind:key="index" pa-2>
-					<es-request-card v-bind:request="request"/>
+					<es-request-card v-bind:request="request.text"/>
 				</v-flex>
 			</v-layout>
 		</v-container>
 	</div>
 </template>
 <script>
+import axios from 'axios'
 export default {
 	name: 'es-request-block',
 	data: () => ({
-		requests: [
-			'Выполняете ли вы заказы в частных домах, коттеджах, дачах?',
-			'Вы делаете уборку квартир только в Ташкенте?',
-			'Могу ли я заказать уборку квартиры и уйти по делам, когда приедет клинер?',
-			'Как работает «Приведи друга»? Сколько стоит уборка квартиры по этой акции?',
-			'Сможете помыть потолки, жалюзи и тому подобное?',
-			'Как оформить регулярную подписку на ваши услуги?',
-			'Какие варианты оплаты уборки имеются?',
-			'Как можно отменить уборку, перенести её на другой день?'
-		]
-	})
+		requests: []
+	}),
+	mounted(){
+		axios({
+			method: 'GET',
+			url: 'http://localhost:3000/requests',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept-Version': '1.x'
+			}
+		}).then(response => {
+			if(response.data.error === 'Ok'){
+				this.requests = response.data.data
+			}
+		})
+	}
 }
 </script>
