@@ -62,7 +62,7 @@
 import axios from 'axios'
 const mixin = {
 	data:() => ({
-      schema: []
+	  schema: []
 	}),
 	methods: {
 		setActive(){
@@ -81,7 +81,7 @@ const mixin = {
         if(response.data.error == 'Ok'){
           this.schema = response.data.data
         }
-      })
+	  })
     }
 }
 export default {
