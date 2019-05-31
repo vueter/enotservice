@@ -6,7 +6,7 @@
 				<span class="font-weight-light">SERVICE</span>
 			</v-toolbar-title>
 			<v-toolbar-items class="navs hidden-sm-and-down">
-				<v-btn flat v-for="(nav, index) in navs" v-bind:key="index">{{nav}}</v-btn>
+				<v-btn flat v-for="(nav, index) in navs" v-bind:key="index">{{nav.text}}</v-btn>
 			</v-toolbar-items>
 			<v-spacer></v-spacer>
 			<v-toolbar-items>
