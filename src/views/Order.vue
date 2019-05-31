@@ -115,7 +115,7 @@ export default {
 		},
 		show(){
 			console.log({
-				user: 'aaaaaaaaaaa',
+				user: this.user._id,
 				city: this.city,
 				region: this.region,
 				street: this.street,
@@ -127,6 +127,9 @@ export default {
 		}
 	},
 	mounted(){
+		if(!this.user){
+			this.$router.push({ path: '/register' })
+		}
 		axios({
 			method: 'GET',
 			url: 'http://localhost:3000/schema',
@@ -181,6 +184,9 @@ export default {
 				values.push(this.getResult(this.schema[i]))
 			}
 			return values
+		},
+		user(){
+			return this.$store.state.user
 		}
 	}
 }

@@ -7,7 +7,7 @@
 					<h3>Личный кабинет</h3>
 				</v-flex>
 				<v-flex md3 xs12 sm12 pa-3>
-					<v-btn large round color="primary" block>Создать новый заказ на уборку</v-btn>
+					<v-btn large round color="primary" block to="/order">Создать новый заказ на уборку</v-btn>
 				</v-flex>
 			</v-layout>
 			<v-layout row wrap>
