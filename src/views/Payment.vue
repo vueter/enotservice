@@ -20,10 +20,10 @@
 						<v-card-text>
 							<v-layout row wrap>
                                 <v-flex md3 xs6 sm6 pa-1>
-                                    <es-choice-card />
+                                    <!--<es-choice-card />-->
                                 </v-flex>
                                 <v-flex md3 sm6 xs6 pa-1>
-                                    <es-choice-card />
+                                    <!--<es-choice-card />-->
                                 </v-flex>
                                 <v-flex md6 sm12 xs12 pa-1>
                                     Оплата картой посредством платежной системы CLICK или Payme наиболее рекомендуемый способ оплаты. Тут будет дополнительный описательный текст или его не будет вовсе
@@ -63,10 +63,27 @@
 	</v-content>
 </template>
 <script>
+import axios from 'axios'
 export default {
 	name: 'order',
 	data: () => ({
-		step : 3
-	})
+		step : 3,
+		order: null
+	}),
+	mounted(){
+		axios({
+			method: 'POST',
+			url: 'http://localhost:3000/orders',
+			data: {
+				_id: this.$route.params.order_id
+			},
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept-Version': '1.0.0'
+			}
+		}).then(response => {
+			console.log(response.data)
+		})
+	}
 }
 </script>

@@ -152,7 +152,8 @@ export default {
 				headers: {
 					'Content-Type': 'application/json',
 					'Accept-Version': '1.0.0'
-				}
+				},
+				data: order
 			}).then(response => {
 				if(response.data.error == 'Ok'){
 					this.$router.push({ path: '/payment/' + response.data.insertedId })

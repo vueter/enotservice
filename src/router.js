@@ -21,7 +21,7 @@ export default new Router({
   routes: [
     { path: '/', name: 'home', component: Home },
     { path: '/order', name: 'order', component: Order },
-    { path: '/payment', name: 'payment', component: Payment },
+    { path: '/payment/:order_id', name: 'payment', component: Payment },
     { path: '/profile', name: 'profile', component: Profile },
     { path: '/login', name: 'login', component: Login },
     { path: '/register', name: 'register', component: Register },
