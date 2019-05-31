@@ -7,8 +7,17 @@
 					<v-card>
 						<v-card-title> Расчет стоимости уборки </v-card-title>
 						<v-card-text style="height:150px;">
-							<es-choice v-bind:items="types" v-bind:circle="true"/>
-							<es-choice v-bind:items="numberRooms" v-bind:circle="false"/>
+							<template v-for="(data, position) in schema">
+								<template v-for="(item, index) in data.body">
+									<template v-if="item.kind === 'Choice'">
+										<es-choice
+											v-bind:key="item.name + '_' + index + '_' + position" 
+											v-bind:items="item.items" 
+											v-bind:setActive="setActive" 
+											v-bind:name="item.name"/>
+									</template>
+								</template>
+							</template>
 						</v-card-text>
 						<v-divider></v-divider>
 						<v-card-text>
@@ -50,8 +59,34 @@
 	</div>
 </template>
 <script>
+import axios from 'axios'
+const mixin = {
+	data:() => ({
+      schema: []
+	}),
+	methods: {
+		setActive(){
+			this.$forceUpdate()
+		}
+	},
+    mounted(){
+      axios({
+        method: 'GET',
+        url: 'http://localhost:3000/schema',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept-Version': '1.0.x'
+        }
+      }).then(response => {
+        if(response.data.error == 'Ok'){
+          this.schema = response.data.data
+        }
+      })
+    }
+}
 export default {
 	name: 'es-header',
+	mixins: [mixin],
 	data: () => {
 		return {
 			types: ['Квартира', 'Свой дом'],
@@ -61,7 +96,6 @@ export default {
 	methods: {
 		getheight(){
 			const height = window.screen.availHeight ;
-			console.log(height)
 			if(height > 700){
 				return (height - 120) + 'px'
 			}

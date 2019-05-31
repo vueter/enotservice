@@ -16,7 +16,7 @@
 					<br/>
 					<v-card class="es-card-header">
 						<v-card-title>РАССКАЖИТЕ НАМ О СВОЕЙ КВАРТИРЕ</v-card-title>
-						{{values}}
+						<v-btn v-on:click="show()">SHOw</v-btn>
 						<template v-for="(item, index) in schema">
 							<template>
 								<v-divider v-bind:key="'divider' + index"></v-divider>
@@ -30,22 +30,22 @@
 						<v-card-text>
 							<v-layout row wrap>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-autocomplete box v-bind:items="cities"/>
+									<v-autocomplete box v-bind:items="cities" v-model="city"/>
 								</v-flex>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-autocomplete box v-bind:items="regions"/>
+									<v-autocomplete box v-bind:items="regions" v-model="region"/>
 								</v-flex>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-text-field box label="Улица"/>
+									<v-text-field box label="Улица" v-model="street"/>
 								</v-flex>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-text-field box label="Номер дома"/>
+									<v-text-field box label="Номер дома" v-model="home"/>
 								</v-flex>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-text-field box label="Подъезд"/>
+									<v-text-field box label="Подъезд" v-model="tier"/>
 								</v-flex>
 								<v-flex md4 xs12 sm12 pa-1>
-									<v-text-field box label="Квартира"/>
+									<v-text-field box label="Квартира" v-model="accommodation"/>
 								</v-flex>
 							</v-layout>
 							<v-btn color="primary" block round large to="/payment">Продолжить</v-btn>
@@ -77,9 +77,15 @@ export default {
 		step : 2,
 		types: ['Квартира', 'Свой дом'],
 		numberRooms: ['1 комнатная', '2-х комнатная', '3-х комнатная', '4-х комнатная', '5-х комнатная'],
-		cities: ['Toshkent', 'Samarkand'],
-		regions: ['Chilonzor', 'Olmazor'],
-		schema: []
+		cities: [],
+		regions: [],
+		schema: [],
+		city: '',
+		region: '',
+		street: '',
+		home: null,
+		tier: null,
+		accommodation: null,
 	}),
 	methods: {
 		getWhere(data, name, target, excludes = []){
@@ -106,6 +112,18 @@ export default {
 				}
 			}
 			return result
+		},
+		show(){
+			console.log({
+				user: 'aaaaaaaaaaa',
+				city: this.city,
+				region: this.region,
+				street: this.street,
+				home: this.home,
+				tier: this.tier,
+				accommodation: this.accommodation,
+				segments: this.values
+			})
 		}
 	},
 	mounted(){
@@ -120,6 +138,40 @@ export default {
 			if(response.data.error == 'Ok'){
 				this.schema = response.data.data
 			}
+		})
+		axios({
+			method: 'GET',
+			url: 'http://localhost:3000/cities',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept-Version': '1.0.x'
+			}
+		}).then(response => {
+			const cities = []
+			if(response.data.error === 'Ok'){
+				for(const item of response.data.data){
+					cities.push(item.name)
+				}
+			}
+			this.cities = cities
+			this.city = this.cities[0]
+		})
+		axios({
+			method: 'GET',
+			url: 'http://localhost:3000/regions',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept-Version': '1.0.x'
+			}
+		}).then(response => {
+			const regions = []
+			if(response.data.error === 'Ok'){
+				for(const item of response.data.data){
+					regions.push(item.name)
+				}
+			}
+			this.regions = regions
+			this.region = this.regions[0]
 		})
 	},
 	computed: {
