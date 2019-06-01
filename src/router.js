@@ -12,6 +12,7 @@ import AdminMain from './admin/Main'
 import Profile from './views/Profile'
 import Login from './views/Login'
 import Register from './views/Register'
+import AdminOrders from './admin/Orders'
 
 Vue.use(Router)
 
@@ -30,6 +31,7 @@ export default new Router({
     { path: '/admin/grud/:target', name: 'grud', component: Grud },
     { path: '/admin/upload', name: 'upload', component: Upload },
     { path: '/admin/login', name: 'adminlogin', component: AdminLogin },
-    { path: '/admin/logout', name: 'adminlogout', component: AdminLogout }
+    { path: '/admin/logout', name: 'adminlogout', component: AdminLogout },
+    { path: '/admin/orders', name: 'adminorders', component: AdminOrders }
   ]
 })

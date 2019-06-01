@@ -35,11 +35,11 @@
 						<v-list-tile v-on:click="link(info['telegram_support'])">
 							<v-list-tile-title>Телеграм поддержка</v-list-tile-title>
 						</v-list-tile>
+						<v-list-tile v-on:click="go('/profile')">
+							<v-list-tile-title>Войти в кабинет</v-list-tile-title>
+						</v-list-tile>
 						<v-list-tile v-on:click="logout()" v-if="user">
 							<v-list-tile-title>Выйти</v-list-tile-title>
-						</v-list-tile>
-						<v-list-tile v-on:click="go('/profile')" v-else>
-							<v-list-tile-title>Войти в кабинет</v-list-tile-title>
 						</v-list-tile>
 						<v-divider></v-divider>
 						<v-list-tile>

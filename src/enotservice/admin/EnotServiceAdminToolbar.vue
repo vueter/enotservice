@@ -30,6 +30,7 @@ export default {
 	data: () => ({
 		navs: [
 			{ text: 'Home', link: '/admin/home' },
+			{ text: 'Orders', link: '/admin/orders' },
 			{ text: 'Users', link: '/admin/grud/users' },
 			{ text: 'Cities', link: '/admin/grud/cities' },
 			{ text: 'Regison', link: '/admin/grud/regions' },
