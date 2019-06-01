@@ -34,6 +34,7 @@
 	</v-card-text>
 </template>
 <script>
+import Vue from 'vue'
 export default {
 	name: 'OrderDisplayer',
 	props: {
@@ -50,7 +51,8 @@ export default {
 		isPayment: {
 			type: Boolean,
 			default: false
-		}
+		},
+		onUpdate: Function
 	},
 	methods: {
 		hasChoice(data){
@@ -71,6 +73,7 @@ export default {
 				this.$emit('input', this.value)
 			}
 			this.$forceUpdate()
+			this.onUpdate()
 		}
 	},
 	computed: {

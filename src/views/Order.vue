@@ -20,7 +20,7 @@
 							<template>
 								<v-divider v-bind:key="'divider' + index"></v-divider>
 							</template>
-							<OrderDisplayer v-bind:data="item" v-model="values[index]" v-bind:value="values[index]" v-bind:key="index"></OrderDisplayer>
+							<OrderDisplayer v-bind:onUpdate="update" v-bind:data="item" v-model="values[index]" v-bind:value="values[index]" v-bind:key="index"></OrderDisplayer>
 						</template>
 					</v-card>
 					<v-card class="es-card-bottom">
@@ -57,8 +57,37 @@
 							Ваш заказ
 						</v-card-title>
 						<v-card-text>
-							Hello world
+							<template v-for="(item, index) in getOrder().segments">
+								<template v-for="(value, name) in item">
+									<v-chip v-if="typeof value === 'string'" color="teal" text-color="white" v-bind:key="name + index">
+										<v-avatar>
+											<v-icon>check_circle</v-icon>
+										</v-avatar>
+										{{value}}
+									</v-chip>
+									<template v-else v-for="(v, index) in value">
+										<v-chip v-if="v.value !== 0" color="teal" text-color="white" v-bind:key="name + index">
+											<v-avatar>
+												<v-icon>check_circle</v-icon>
+											</v-avatar>
+											{{v.name}}: {{v.value}}x
+										</v-chip>
+									</template>
+								</template>
+							</template>
+							
 						</v-card-text>
+						<v-divider></v-divider>
+						<v-list>
+							<v-list-tile>
+								<v-list-tile-content>
+									Общая сумма:
+								</v-list-tile-content>
+								<v-list-tile-action>
+									{{getOrder().price}}
+								</v-list-tile-action>
+							</v-list-tile>
+						</v-list>
 					</v-card>
 				</v-flex>
 			</v-layout>
@@ -112,7 +141,7 @@ export default {
 			}
 			return result
 		},
-		createOrder(){
+		getOrder(){
 			var price = 0;
 			for(var i = 0; i < this.schema.length; i++){
 				for(const item of this.schema[i].body){
@@ -146,6 +175,9 @@ export default {
 				segments: this.values,
 				price: price
 			}
+			return order
+		},
+		createOrder(){
 			axios({
 				method: 'POST',
 				url: 'http://enotservice.uz/api/orders/create',
@@ -153,12 +185,15 @@ export default {
 					'Content-Type': 'application/json',
 					'Accept-Version': '1.0.0'
 				},
-				data: order
+				data: this.getOrder()
 			}).then(response => {
 				if(response.data.error == 'Ok'){
 					this.$router.push({ path: '/payment/' + response.data.insertedId })
 				}
 			})
+		},
+		update(){
+			this.$forceUpdate()
 		}
 	},
 	mounted(){

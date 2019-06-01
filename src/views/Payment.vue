@@ -64,6 +64,17 @@
 								</template>
 							</template>
 						</v-card-text>
+						<v-divider></v-divider>
+						<v-list>
+							<v-list-tile>
+								<v-list-tile-content>
+									Общая сумма:
+								</v-list-tile-content>
+								<v-list-tile-action>
+									{{order.data[0].price}}
+								</v-list-tile-action>
+							</v-list-tile>
+						</v-list>
 					</v-card>
 				</v-flex>
 			</v-layout>
