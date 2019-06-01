@@ -44,8 +44,25 @@
 						<v-card-title>
 							Ваш заказ
 						</v-card-title>
-						<v-card-text>
-							Hello world
+						<v-card-text v-if="order !== null && order.data.length > 0">
+							<template v-for="(item, index) in order.data[0].segments">
+								<template v-for="(value, name) in item">
+									<v-chip v-if="typeof value === 'string'" color="teal" text-color="white" v-bind:key="name + index">
+										<v-avatar>
+											<v-icon>check_circle</v-icon>
+										</v-avatar>
+										{{value}}
+									</v-chip>
+									<template v-else v-for="(v, index) in value">
+										<v-chip v-if="v.value !== 0" color="teal" text-color="white" v-bind:key="name + index">
+											<v-avatar>
+												<v-icon>check_circle</v-icon>
+											</v-avatar>
+											{{v.name}}: {{v.value}}x
+										</v-chip>
+									</template>
+								</template>
+							</template>
 						</v-card-text>
 					</v-card>
 				</v-flex>
@@ -63,6 +80,7 @@ export default {
 		step : 3,
 		order: null,
 		schema: [],
+		orderSchema: [],
 		dialog: true
 	}),
 	components: { OrderDisplayer },
@@ -100,6 +118,7 @@ export default {
 				}).then(response => {
 					console.log(response.data)
 				})
+				
 			}
 		}
 	},
@@ -132,6 +151,19 @@ export default {
 		}).then(response => {
 			if(response.data.error == 'Ok'){
 				this.schema = response.data.data
+			}
+		})
+
+		axios({
+			method: 'GET',
+			url: 'http://enotservice.uz/api/schema',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept-Version': '1.0.0'
+			}
+		}).then(response => {
+			if(response.data.error === 'Ok'){
+				this.orderSchema = response.data.data
 			}
 		})
 	},

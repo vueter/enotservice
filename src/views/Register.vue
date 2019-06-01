@@ -70,13 +70,13 @@ export default {
 	name: 'EnotServiceRegister',
 	data: () => ({
 		state: 1,
-		username: 'tensor2flow',
-		firstname: 'Firdavs',
-		lastname: 'Beknazarov',
-		phonenumber: '933363933',
-		email: 'tensor2flow@gmail.com',
-		password: 'bellur48512673',
-		repassword: 'bellur48512673',
+		username: '',
+		firstname: '',
+		lastname: '',
+		phonenumber: '',
+		email: '',
+		password: '',
+		repassword: '',
 		smscode: ''
 	}),
 	methods: {
@@ -86,7 +86,7 @@ export default {
 				(this.phonenumber.length > 0 && this.password.length > 0 && this.repassword.length > 0)
 			){
 				if(this.password === this.repassword){
-					if(this.state == 1){
+					/*if(this.state == 1){
 						axios({
 							method: 'POST',
 							url: 'http://enotservice.uz/api/verify',
@@ -112,29 +112,30 @@ export default {
 							}
 						}).then(response => {
 							if(response.data.error === 'Ok'){
-								axios({
-									method: 'POST',
-									url: 'http://enotservice.uz/api/register',
-									data: {
-										username: this.username,
-										password: this.password,
-										firstname: this.firstname,
-										lastname: this.lastname,
-										phonenumber: this.phonenumber,
-										email: this.email
-									},
-									headers: {
-										'Content-Type': 'application/json',
-										'Accept-Version': '1.0.0'
-									}
-								}).then(response => {
-									if(response.data.error === 'Ok'){
-										this.$router.push({ path: '/login' })
-									}
-								})
+								
 							}
 						})
-					}
+					}*/
+					axios({
+						method: 'POST',
+						url: 'http://enotservice.uz/api/register',
+						data: {
+							username: this.username,
+							password: this.password,
+							firstname: this.firstname,
+							lastname: this.lastname,
+							phonenumber: this.phonenumber,
+							email: this.email
+						},
+						headers: {
+							'Content-Type': 'application/json',
+							'Accept-Version': '1.0.0'
+						}
+					}).then(response => {
+						if(response.data.error === 'Ok'){
+							this.$router.push({ path: '/login' })
+						}
+					})
 				}
 			}
 		}

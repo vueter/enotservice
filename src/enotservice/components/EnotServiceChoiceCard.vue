@@ -2,7 +2,7 @@
 	<v-card flat class="es-card" v-bind:class="isActive ? 'active-choice-card' : ''">
 		<v-card-text v-on:click="onClick()">
 			<center>
-				<img v-bind:src="'http://localhost:3000/uploads/' + schema.icon">
+				<img v-bind:src="'http://enotservice.uz/api/uploads/' + schema.icon">
 				<p style="font-size:18px">{{ schema.text }}</p>
 			</center>
 		</v-card-text>
