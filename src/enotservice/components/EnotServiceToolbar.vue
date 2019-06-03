@@ -5,10 +5,10 @@
 				<span>ENOT</span>
 				<span class="font-weight-light">SERVICE</span>
 			</v-toolbar-title>
+			<v-spacer></v-spacer>
 			<v-toolbar-items class="navs hidden-sm-and-down">
 				<v-btn flat v-for="(nav, index) in navs" v-bind:key="index" v-bind:to="nav.link">{{nav.text}}</v-btn>
 			</v-toolbar-items>
-			<v-spacer></v-spacer>
 			<v-toolbar-items>
 				<v-menu v-bind:nudge-width="200" offset-y>
 					<template v-slot:activator="{ on }">

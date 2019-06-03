@@ -3,7 +3,7 @@
 		<es-toolbar />
 		<v-container class="main">
 			<v-layout row wrap>
-				<v-flex md3>
+				<v-flex lg3 md4>
 					<v-card class="header-main-card">
 						<v-card-title> Расчет стоимости уборки </v-card-title>
 						<v-card-text style="height:150px;">
