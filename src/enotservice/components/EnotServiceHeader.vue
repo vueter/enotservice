@@ -13,7 +13,7 @@
 										<es-choice
 											v-bind:key="item.name + '_' + index + '_' + position" 
 											v-bind:items="item.items"
-											v-bind:setActive="setActive" 
+											v-bind:setActive="setActive"
 											v-bind:name="item.name"/>
 									</template>
 								</template>
